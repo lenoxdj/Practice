@@ -1,0 +1,160 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <ClCompile Include="AssemblyInfo.cpp" />
+    <ClCompile Include="Main.cpp" />
+    <ClCompile Include="stdafx.cpp" />
+    <ClCompile Include="HelperClasses\Templates.cpp">
+      <Filter>HelperClasses</Filter>
+    </ClCompile>
+    <ClCompile Include="LeetCodeProblems\ZigZagConversion.cpp">
+      <Filter>LeetCodeProblems</Filter>
+    </ClCompile>
+    <ClCompile Include="HelperClasses\TestResource.cpp">
+      <Filter>HelperClasses</Filter>
+    </ClCompile>
+    <ClCompile Include="DataStructures\DoubleLinkedList.cpp">
+      <Filter>DataStructures</Filter>
+    </ClCompile>
+    <ClCompile Include="DataStructures\ListNode.cpp">
+      <Filter>DataStructures</Filter>
+    </ClCompile>
+    <ClCompile Include="DataStructures\RedBlackTree.cpp">
+      <Filter>DataStructures</Filter>
+    </ClCompile>
+    <ClCompile Include="DataStructures\SingleLinkedList.cpp">
+      <Filter>DataStructures</Filter>
+    </ClCompile>
+    <ClCompile Include="HelperClasses\SortingSearching.cpp">
+      <Filter>HelperClasses</Filter>
+    </ClCompile>
+    <ClCompile Include="LeetCodeProblems\SingleFunctionSolutions.cpp">
+      <Filter>LeetCodeProblems</Filter>
+    </ClCompile>
+    <ClCompile Include="LeetCodeProblems\ContainerWithMostWater.cpp">
+      <Filter>LeetCodeProblems</Filter>
+    </ClCompile>
+    <ClCompile Include="LeetCodeProblems\RomanConversion.cpp">
+      <Filter>LeetCodeProblems</Filter>
+    </ClCompile>
+    <ClCompile Include="LeetCodeProblems\KSum.cpp">
+      <Filter>LeetCodeProblems</Filter>
+    </ClCompile>
+    <ClCompile Include="DataStructures\BinarySearchTree.cpp">
+      <Filter>DataStructures</Filter>
+    </ClCompile>
+    <ClCompile Include="DataStructures\TreeNode.cpp">
+      <Filter>DataStructures</Filter>
+    </ClCompile>
+    <ClCompile Include="LeetCodeProblems\LRUCache.cpp">
+      <Filter>LeetCodeProblems</Filter>
+    </ClCompile>
+    <ClCompile Include="LeetCodeProblems\GenerateAllParentheses.cpp">
+      <Filter>LeetCodeProblems</Filter>
+    </ClCompile>
+    <ClCompile Include="DataStructures\Vertex.cpp">
+      <Filter>DataStructures</Filter>
+    </ClCompile>
+    <ClCompile Include="DataStructures\AdjList.cpp">
+      <Filter>DataStructures</Filter>
+    </ClCompile>
+    <ClCompile Include="DataStructures\Edge.cpp">
+      <Filter>DataStructures</Filter>
+    </ClCompile>
+    <ClCompile Include="DataStructures\EdgeList.cpp">
+      <Filter>DataStructures</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="resource.h" />
+    <ClInclude Include="stdafx.h" />
+    <ClInclude Include="HelperClasses\Templates.h">
+      <Filter>HelperClasses</Filter>
+    </ClInclude>
+    <ClInclude Include="LeetCodeProblems\ZigZagConversion.h">
+      <Filter>LeetCodeProblems</Filter>
+    </ClInclude>
+    <ClInclude Include="HelperClasses\TestResource.h">
+      <Filter>HelperClasses</Filter>
+    </ClInclude>
+    <ClInclude Include="DataStructures\DoubleLinkedList.h">
+      <Filter>DataStructures</Filter>
+    </ClInclude>
+    <ClInclude Include="DataStructures\RedBlackTree.h">
+      <Filter>DataStructures</Filter>
+    </ClInclude>
+    <ClInclude Include="DataStructures\ListNode.h">
+      <Filter>DataStructures</Filter>
+    </ClInclude>
+    <ClInclude Include="DataStructures\SingleLinkedList.h">
+      <Filter>DataStructures</Filter>
+    </ClInclude>
+    <ClInclude Include="HelperClasses\SortingSearching.h">
+      <Filter>HelperClasses</Filter>
+    </ClInclude>
+    <ClInclude Include="LeetCodeProblems\SingleFunctionSolutions.h">
+      <Filter>LeetCodeProblems</Filter>
+    </ClInclude>
+    <ClInclude Include="LeetCodeProblems\ContainerWithMostWater.h">
+      <Filter>LeetCodeProblems</Filter>
+    </ClInclude>
+    <ClInclude Include="LeetCodeProblems\RomanConversion.h">
+      <Filter>LeetCodeProblems</Filter>
+    </ClInclude>
+    <ClInclude Include="LeetCodeProblems\KSum.h">
+      <Filter>LeetCodeProblems</Filter>
+    </ClInclude>
+    <ClInclude Include="DataStructures\BinarySearchTree.h">
+      <Filter>DataStructures</Filter>
+    </ClInclude>
+    <ClInclude Include="DataStructures\TreeNode.h">
+      <Filter>DataStructures</Filter>
+    </ClInclude>
+    <ClInclude Include="LeetCodeProblems\LRUCache.h">
+      <Filter>LeetCodeProblems</Filter>
+    </ClInclude>
+    <ClInclude Include="LeetCodeProblems\GenerateAllParentheses.h">
+      <Filter>LeetCodeProblems</Filter>
+    </ClInclude>
+    <ClInclude Include="DataStructures\Vertex.h">
+      <Filter>DataStructures</Filter>
+    </ClInclude>
+    <ClInclude Include="DataStructures\AdjList.h">
+      <Filter>DataStructures</Filter>
+    </ClInclude>
+    <ClInclude Include="DataStructures\Edge.h">
+      <Filter>DataStructures</Filter>
+    </ClInclude>
+    <ClInclude Include="DataStructures\EdgeList.h">
+      <Filter>DataStructures</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="app.rc" />
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="app.ico" />
+    <Image Include="Notes\CPlusPlusPIMPL.png">
+      <Filter>Notes</Filter>
+    </Image>
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="LeetCodeProblems">
+      <UniqueIdentifier>{ac339f32-272e-4cb7-aa10-a30fbab8f12a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="HelperClasses">
+      <UniqueIdentifier>{820c12f7-094d-4c9f-a246-91aa872510a6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="DataStructures">
+      <UniqueIdentifier>{a14b6a83-045b-43e8-b97c-2a7f92cee9b2}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Notes">
+      <UniqueIdentifier>{1d0db696-a2ef-4a02-966d-e13966cecdca}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="Notes\PIMPL_README.txt">
+      <Filter>Notes</Filter>
+    </Text>
+  </ItemGroup>
+</Project>
