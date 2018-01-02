@@ -7,11 +7,13 @@ namespace DataStructures
     class Edge
     {
     public:
-        Edge(int ep, int weight);
+        Edge(int from, int to, int weight);
+        int GetFrom();
         int GetEndPoint();
         int GetWeight();
     private:
-        int m_endPoint;
+        int m_from;
+        int m_to;
         int m_weight;
     };
 }

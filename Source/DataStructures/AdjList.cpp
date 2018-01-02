@@ -68,12 +68,12 @@ void AdjList::InsertEdge(int fromA, int toB, int weight /*=1*/, bool isDirected 
         auto aList = m_al[m_m[fromA]];
         if (aList)
         {
-            aList->AddEdge(new Edge(toB, weight));
+            aList->AddEdge(new Edge(fromA, toB, weight));
 
             if (!isDirected)
             {
                 auto bList = m_al[m_m[toB]];
-                bList->AddEdge(new Edge(fromA, weight));
+                bList->AddEdge(new Edge(toB, fromA, weight));
             }
         }
     }
@@ -102,7 +102,6 @@ std::list<Edge*> DataStructures::AdjList::PrimsMST()
 {
     std::list<Edge*> mst;
     std::list<Vertex*> curNodes;
-    std::map<int, int> m;
 
     curNodes.push_front(m_al[0]->GetRoot());
     m_al[0]->GetRoot()->SetInTree(true);
@@ -111,14 +110,13 @@ std::list<Edge*> DataStructures::AdjList::PrimsMST()
     {
         std::list<Edge*> curEdges;
         std::for_each(begin(curNodes), end(curNodes),
-            [this, &curEdges, &m](Vertex* v) mutable
+            [this, &curEdges](Vertex* v) mutable
         {
             auto vEdges = m_al[m_m[v->GetKey()]]->GetEdges();
             std::for_each(begin(vEdges), end(vEdges),
-                [&curEdges, &m, v](Edge* e) mutable
+                [&curEdges, v](Edge* e) mutable
             {
                 curEdges.push_back(e);
-                m[e->GetEndPoint()] = v->GetKey();
             });
         });
 
@@ -137,7 +135,6 @@ std::list<Edge*> DataStructures::AdjList::PrimsMST()
 
         if (minWeightEdge)
         {
-            std::cout << "[" << m[minWeightEdge->GetEndPoint()] << ", " << minWeightEdge->GetEndPoint() << "]" << std::endl;
             mst.push_back(minWeightEdge);
             curNodes.push_back(m_al[m_m[minWeightEdge->GetEndPoint()]]->GetRoot());
             m_al[m_m[minWeightEdge->GetEndPoint()]]->GetRoot()->SetInTree(true);

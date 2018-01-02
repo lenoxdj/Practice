@@ -3,14 +3,20 @@
 
 using namespace DataStructures;
 
-Edge::Edge(int v, int w) :
-    m_endPoint(v),
+Edge::Edge(int from, int to, int w) :
+    m_from(from),
+    m_to(to),
     m_weight(w)
 {}
 
+int Edge::GetFrom()
+{
+    return m_from;
+}
+
 int Edge::GetEndPoint()
 {
-    return m_endPoint;
+    return m_to;
 }
 
 int Edge::GetWeight()

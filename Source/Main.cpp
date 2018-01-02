@@ -48,17 +48,17 @@ void FillVectorWithRandomInts(std::vector<int>& v, int num, int min, int max)
 }
 
 //template <typename T>
-void PrintList(std::list<Edge*> v)
+void PrintListOfEdges(std::list<Edge*> v)
 {
-    std::cout << "[ ";
+    std::cout << "{ ";
 
     std::for_each(begin(v), end(v),
         [](Edge* cur)
     {
-        std::cout << cur->GetEndPoint() << " ";
+        std::cout << "[" << cur->GetFrom() << "," << cur->GetEndPoint() << "] ";
     });
 
-    std::cout << "]" << std::endl;
+    std::cout << "}" << std::endl;
 }
 
 template <typename T>
@@ -112,7 +112,6 @@ int main(array<String^>^ args)
 
     al->SetRoot(1);
 
-    // 10 is not connected
     al->InsertEdge(1, 2, 3);
     al->InsertEdge(1, 3, 5);
     al->InsertEdge(2, 3, 6);
@@ -127,7 +126,7 @@ int main(array<String^>^ args)
     // Start timer
     start = std::clock();
 
-    PrintList(al->PrimsMST());
+    PrintListOfEdges(al->PrimsMST());
 
     // End timer
     duration = (std::clock() - start) / (double)CLOCKS_PER_SEC;
