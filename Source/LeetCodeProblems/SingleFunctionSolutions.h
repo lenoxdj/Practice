@@ -12,7 +12,9 @@ namespace LeetCodeProblems
         static bool ValidParentheses(std::string s); // #20
         static int RemoveDuplicatesFromSortedArray(std::vector<int>& v); // #26
         static int RemoveElement(std::vector<int>& v, int val); // #27
-        static int StrStr(std::string haystack, std::string needle);
+        static int StrStr(std::string haystack, std::string needle); // #28
+        static int DivideTwoIntegers(int dividend, int divisor); // #29
+        static void NextPermutation(std::vector<int>& nums); // #31
 
     private:
         static int FindLastPositionThatIsntVal(std::vector<int> v, int val, int start);

@@ -1,7 +1,9 @@
 #include "stdafx.h"
 #include "SingleFunctionSolutions.h"
+#include "SortingSearching.h"
 
 using namespace LeetCodeProblems;
+using namespace HelperClasses;
 
 int SingleFunctionSolutions::ReverseInteger(int x)
 {
@@ -210,6 +212,62 @@ int LeetCodeProblems::SingleFunctionSolutions::StrStr(std::string haystack, std:
     }
 
     return result;
+}
+
+int SingleFunctionSolutions::DivideTwoIntegers(int dividend, int divisor)
+{
+    if (divisor == 0) return INT_MAX;
+    if (dividend == INT_MIN && divisor == -1) return INT_MAX;
+    if (dividend == 0) return 0;
+
+    int sign = ((dividend < 0) ^ (divisor < 0)) ? -1 : 1;
+
+    dividend = abs(dividend);
+    divisor = abs(divisor);
+
+    int result = 0;
+    while (dividend >= divisor)
+    {
+        result++;
+        dividend -= divisor;
+    }
+
+    return (sign == 1) ? result : -result;
+}
+
+void SingleFunctionSolutions::NextPermutation(std::vector<int>& nums)
+{
+    int numsSize = static_cast<int>(nums.size());
+
+    if (numsSize > 1)
+    {
+        int indexFirstDecreasing = -1;
+
+        int curVal = nums[numsSize - 1];
+        for (int i = numsSize - 2; i >= 0; i--)
+        {
+            if (nums[i] < curVal)
+            {
+                indexFirstDecreasing = i;
+                break;
+            }
+
+            curVal = nums[i];
+        }
+
+        if (indexFirstDecreasing == -1)
+        {
+            SortingSearching::QuickSort(nums);
+            return;
+        }
+
+        int indexSmallestLarger = SortingSearching::IndexOfNextLargerValue(nums, indexFirstDecreasing);
+        std::cout << "indexFirstDecreasing: " << indexFirstDecreasing << std::endl;
+        std::cout << "indexSmallestLarger: " << indexSmallestLarger << std::endl;
+
+        SortingSearching::Swap(nums, indexFirstDecreasing, indexSmallestLarger);
+        std::reverse((begin(nums) + indexSmallestLarger + 1), end(nums));
+    }
 }
 
 

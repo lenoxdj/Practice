@@ -91,18 +91,8 @@ void PrintVectors(std::vector<std::vector<T>> vectors)
     });
 }
 
-int main(array<String^>^ args)
+AdjList* MakeAdjList()
 {
-    std::cout << "MAIN" << std::endl;
-    std::cout << std::endl;
-
-    std::clock_t start;
-    double duration;
-
-    std::vector<int> test;
-    //FillVectorWithRandomInts(test, 100, 0, 5);
-    //PrintVector(test);
-
     AdjList* al = new AdjList();
 
     for (int i = 1; i <= 9; i++)
@@ -123,15 +113,33 @@ int main(array<String^>^ args)
     al->InsertEdge(6, 7, 10);
     al->InsertEdge(8, 9, 3);
 
+    return al;
+}
+
+int main(array<String^>^ args)
+{
+    std::cout << "MAIN" << std::endl;
+    std::cout << std::endl;
+
+    std::clock_t start;
+    double duration;
+
+    std::vector<int> test {1, 5, 8, 4, 7, 6, 5, 3, 1};
+    //FillVectorWithRandomInts(test, 5, 0, 9);
+    PrintVector(test);
+
     // Start timer
     start = std::clock();
 
-    PrintListOfEdges(al->PrimsMST());
+    SingleFunctionSolutions::NextPermutation(test);
+    PrintVector(test);
+
+    // Expect 1 5 8 5 1 3 4 6 7
 
     // End timer
     duration = (std::clock() - start) / (double)CLOCKS_PER_SEC;
 
-    delete al;
+    //delete al;
 
     std::cout << std::endl;
     std::cout << "duration: " << duration << "s" << std::endl;

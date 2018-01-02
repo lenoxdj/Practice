@@ -89,6 +89,39 @@ int SortingSearching::Fib(int n)
     }
 }
 
+int SortingSearching::IndexOfNextLargerValue(std::vector<int> v, int curIndex)
+{
+    int retVal = -1;
+
+    if (curIndex >= 0 && v.size() > 1 && curIndex < v.size())
+    {
+        int valAtCurIndex = v[curIndex];
+        auto copyOfV = v;
+        std::sort(begin(v) + curIndex, end(v));
+
+        int valOfNextLarger = -1;
+        for (int i = curIndex + 1; i < v.size(); i++)
+        {
+            if (v[i] > valAtCurIndex)
+            {
+                valOfNextLarger = v[i];
+                break;
+            }
+        }
+
+        for (int i = curIndex; i < copyOfV.size(); i++)
+        {
+            if (copyOfV[i] == valOfNextLarger)
+            {
+                retVal = i;
+                break;
+            }
+        }
+    }
+
+    return retVal;
+}
+
 int SortingSearching::LinearSearch(std::vector<int> v, int key)
 {
     int retVal = -1;
@@ -223,6 +256,8 @@ int SortingSearching::BinarySearch(std::vector<int> v, int key, int low, int hig
 
 void SortingSearching::PrintArr(std::vector<int> v)
 {
+    std::cout << std::endl;
+
     std::for_each(begin(v), end(v), [](int val)
     {
         std::cout << val << " ";
