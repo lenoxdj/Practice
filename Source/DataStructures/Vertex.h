@@ -23,6 +23,8 @@ namespace DataStructures
         int GetEntryTime();
         void SetExitTime(int time);
         int GetExitTime();
+        bool GetInTree();
+        void SetInTree(bool value);
 
         void Reset();
 
@@ -35,5 +37,6 @@ namespace DataStructures
         int m_parent;
         int m_entryTime;
         int m_exitTime;
+        bool m_inTree;
     };
 }

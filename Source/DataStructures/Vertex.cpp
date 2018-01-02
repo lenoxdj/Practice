@@ -8,7 +8,8 @@ Vertex::Vertex(int key) :
     m_parent(-1),
     m_state(VertexState::Undiscovered),
     m_entryTime(-1),
-    m_exitTime(-1)
+    m_exitTime(-1),
+    m_inTree(false)
 {}
 
 inline bool Vertex::operator==(const Vertex& other) const
@@ -65,13 +66,23 @@ int Vertex::GetExitTime()
     return m_exitTime;
 }
 
+bool Vertex::GetInTree()
+{
+    return m_inTree;
+}
 
-void DataStructures::Vertex::Reset()
+void Vertex::SetInTree(bool value)
+{
+    m_inTree = value;
+}
+
+void Vertex::Reset()
 {
     m_entryTime = -1;
     m_exitTime = -1;
     m_parent = -1;
     m_state = VertexState::Undiscovered;
+    m_inTree = false;
 }
 
 std::string Vertex::VertexStateStr(VertexState state)

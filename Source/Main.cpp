@@ -47,15 +47,15 @@ void FillVectorWithRandomInts(std::vector<int>& v, int num, int min, int max)
     }
 }
 
-template <typename T>
-void PrintList(std::list<T> v)
+//template <typename T>
+void PrintList(std::list<Edge*> v)
 {
     std::cout << "[ ";
 
     std::for_each(begin(v), end(v),
-        [](T cur)
+        [](Edge* cur)
     {
-        std::cout << cur << " ";
+        std::cout << cur->GetEndPoint() << " ";
     });
 
     std::cout << "]" << std::endl;
@@ -105,7 +105,7 @@ int main(array<String^>^ args)
 
     AdjList* al = new AdjList();
 
-    for (int i = 1; i <= 10; i++)
+    for (int i = 1; i <= 9; i++)
     {
         al->InsertVertex(i);
     }
@@ -113,31 +113,25 @@ int main(array<String^>^ args)
     al->SetRoot(1);
 
     // 10 is not connected
-    al->InsertEdge(1, 2);
-    al->InsertEdge(1, 3);
-    al->InsertEdge(2, 3);
-    al->InsertEdge(2, 4);
-    al->InsertEdge(2, 6);
-    al->InsertEdge(3, 4);
-    al->InsertEdge(3, 5);
-    al->InsertEdge(6, 8);
-    al->InsertEdge(6, 7);
-    al->InsertEdge(8, 9);
+    al->InsertEdge(1, 2, 3);
+    al->InsertEdge(1, 3, 5);
+    al->InsertEdge(2, 3, 6);
+    al->InsertEdge(2, 4, 2);
+    al->InsertEdge(2, 6, 1);
+    al->InsertEdge(3, 4, 3);
+    al->InsertEdge(3, 5, 1);
+    al->InsertEdge(6, 8, 2);
+    al->InsertEdge(6, 7, 10);
+    al->InsertEdge(8, 9, 3);
 
     // Start timer
     start = std::clock();
 
-    al->Traverse(TraversalType::DFS);
-    std::cout << std::endl;
-    al->PrintParents();
-    std::cout << std::endl;
-    //std::cout << al->NumberOfDecendents(1) << std::endl;
+    PrintList(al->PrimsMST());
 
     // End timer
     duration = (std::clock() - start) / (double)CLOCKS_PER_SEC;
 
-    //al->PrintList(&al->NodeEdges(1));
-    //al->Print();
     delete al;
 
     std::cout << std::endl;

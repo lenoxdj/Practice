@@ -98,6 +98,55 @@ std::list<Edge*> AdjList::NodeEdges(int node)
     return m_al[m_m[node]]->GetEdges();
 }
 
+std::list<Edge*> DataStructures::AdjList::PrimsMST()
+{
+    std::list<Edge*> mst;
+    std::list<Vertex*> curNodes;
+    std::map<int, int> m;
+
+    curNodes.push_front(m_al[0]->GetRoot());
+    m_al[0]->GetRoot()->SetInTree(true);
+
+    for (int i = 0; i < m_al.size() - 1; i++)
+    {
+        std::list<Edge*> curEdges;
+        std::for_each(begin(curNodes), end(curNodes),
+            [this, &curEdges, &m](Vertex* v) mutable
+        {
+            auto vEdges = m_al[m_m[v->GetKey()]]->GetEdges();
+            std::for_each(begin(vEdges), end(vEdges),
+                [&curEdges, &m, v](Edge* e) mutable
+            {
+                curEdges.push_back(e);
+                m[e->GetEndPoint()] = v->GetKey();
+            });
+        });
+
+        Edge* minWeightEdge = nullptr;
+        int curMinWeight = INT_MAX;
+        std::for_each(begin(curEdges), end(curEdges),
+            [this, &minWeightEdge, curMinWeight, &curNodes](Edge* e) mutable
+        {
+            if (!m_al[m_m[e->GetEndPoint()]]->GetRoot()->GetInTree() &&
+                (e->GetWeight() < curMinWeight))
+            {
+                minWeightEdge = e;
+                curMinWeight = e->GetWeight();
+            }
+        });
+
+        if (minWeightEdge)
+        {
+            std::cout << "[" << m[minWeightEdge->GetEndPoint()] << ", " << minWeightEdge->GetEndPoint() << "]" << std::endl;
+            mst.push_back(minWeightEdge);
+            curNodes.push_back(m_al[m_m[minWeightEdge->GetEndPoint()]]->GetRoot());
+            m_al[m_m[minWeightEdge->GetEndPoint()]]->GetRoot()->SetInTree(true);
+        }
+    }
+
+    return mst;
+}
+
 void DataStructures::AdjList::Traverse(TraversalType t)
 {
     if (m_root)
@@ -211,6 +260,27 @@ void AdjList::ProcessEdge(Vertex* v, Edge* e, bool d)
     {
         std::cout << "Cycle from " << v->GetKey() << " to " << e->GetEndPoint() << std::endl;
     }
+}
+
+int AdjList::NodeNotInTree(std::list<Vertex*> vl)
+{
+    int result = -1;
+
+    std::for_each(begin(vl), end(vl),
+        [this, &result](Vertex* v)
+    {
+        auto curEdges = m_al[m_m[v->GetKey()]]->GetEdges();
+        std::for_each(begin(curEdges), end(curEdges),
+            [this, &result](Edge* e)
+        {
+            if (!m_al[m_m[e->GetEndPoint()]]->GetRoot()->GetInTree())
+            {
+                result = e->GetEndPoint();
+            }
+        });
+    });
+
+    return result;
 }
 
 std::list<int> AdjList::FindPath(int v)

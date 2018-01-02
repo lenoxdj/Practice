@@ -22,6 +22,7 @@ namespace DataStructures
         void InsertEdge(int a, int b, int weight = 1, bool isDirected = false);
         bool HasEdge(int node, int edge);
         std::list<Edge*> NodeEdges(int node);
+        std::list<Edge*> PrimsMST();
 
         void Traverse(TraversalType t);
         std::list<int> FindPath(int v);
@@ -37,6 +38,7 @@ namespace DataStructures
         void ProcessVertexEarly(Vertex* v);
         void ProcessVertexLate(Vertex* v);
         void ProcessEdge(Vertex* v, Edge* e, bool direction);
+        int NodeNotInTree(std::list<Vertex*> vl);
         void Reset();
 
         void FindPath(int start, std::list<int>& res);
