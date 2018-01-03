@@ -124,17 +124,12 @@ int main(array<String^>^ args)
     std::clock_t start;
     double duration;
 
-    std::vector<int> test {1, 5, 8, 4, 7, 6, 5, 3, 1};
+    std::vector<int> test {};
     //FillVectorWithRandomInts(test, 5, 0, 9);
     PrintVector(test);
 
     // Start timer
     start = std::clock();
-
-    SingleFunctionSolutions::NextPermutation(test);
-    PrintVector(test);
-
-    // Expect 1 5 8 5 1 3 4 6 7
 
     // End timer
     duration = (std::clock() - start) / (double)CLOCKS_PER_SEC;

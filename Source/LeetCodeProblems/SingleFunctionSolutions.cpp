@@ -262,11 +262,8 @@ void SingleFunctionSolutions::NextPermutation(std::vector<int>& nums)
         }
 
         int indexSmallestLarger = SortingSearching::IndexOfNextLargerValue(nums, indexFirstDecreasing);
-        std::cout << "indexFirstDecreasing: " << indexFirstDecreasing << std::endl;
-        std::cout << "indexSmallestLarger: " << indexSmallestLarger << std::endl;
-
         SortingSearching::Swap(nums, indexFirstDecreasing, indexSmallestLarger);
-        std::reverse((begin(nums) + indexSmallestLarger + 1), end(nums));
+        std::reverse((begin(nums) + indexFirstDecreasing + 1), end(nums));
     }
 }
 
