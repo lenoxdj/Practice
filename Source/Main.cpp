@@ -124,12 +124,16 @@ int main(array<String^>^ args)
     std::clock_t start;
     double duration;
 
-    std::vector<int> test {};
+    std::vector<int> test {1, 2, 2, 2, 2, 3, 3, 5, 8};
     //FillVectorWithRandomInts(test, 5, 0, 9);
     PrintVector(test);
 
     // Start timer
     start = std::clock();
+
+    auto result = SingleFunctionSolutions::CombinationSum2(test, 8);
+
+    PrintVectors(result);
 
     // End timer
     duration = (std::clock() - start) / (double)CLOCKS_PER_SEC;

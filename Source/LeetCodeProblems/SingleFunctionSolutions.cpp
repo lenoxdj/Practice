@@ -267,8 +267,77 @@ void SingleFunctionSolutions::NextPermutation(std::vector<int>& nums)
     }
 }
 
+std::vector<std::vector<int>> SingleFunctionSolutions::CombinationSum(std::vector<int>& nums, int target)
+{
+    std::sort(begin(nums), end(nums));
+    std::vector<std::vector<int>> result;
+    std::vector<int> combination;
+    SingleFunctionSolutions::CombinationSum(nums, target, result, combination, 0);
+    return result;
+}
+
+std::vector<std::vector<int>> SingleFunctionSolutions::CombinationSum2(std::vector<int>& nums, int target)
+{
+    std::sort(begin(nums), end(nums));
+    std::vector<std::vector<int>> result;
+    std::vector<int> combination;
+    std::vector<int> used;
+    SingleFunctionSolutions::CombinationSum2(nums, target, result, combination, used, 0);
+    return result;
+}
 
 // Helper functions
+
+void SingleFunctionSolutions::CombinationSum(
+    std::vector<int>& nums,
+    int target,
+    std::vector<std::vector<int>>& result,
+    std::vector<int>& combination,
+    int begin)
+{
+    if (target == 0)
+    {
+        result.push_back(combination);
+        return;
+    }
+
+    for (int i = begin; i != nums.size() && target >= nums[i]; ++i)
+    {
+        combination.push_back(nums[i]);
+        SingleFunctionSolutions::CombinationSum(nums, target - nums[i], result, combination, i);
+        combination.pop_back();
+    }
+}
+
+void SingleFunctionSolutions::CombinationSum2(
+    std::vector<int>& nums,
+    int target,
+    std::vector<std::vector<int>>& result,
+    std::vector<int>& combination,
+    std::vector<int>& used,
+    int begin)
+{
+    if (target == 0)
+    {
+        if (std::find(result.begin(), end(result), combination) == end(result))
+        {
+            result.push_back(combination);
+            return;
+        }
+    }
+
+    for (int i = begin; i != nums.size() && target >= nums[i]; ++i)
+    {
+        if (std::find(used.begin(), end(used), i) == end(used))
+        {
+            combination.push_back(nums[i]);
+            used.push_back(i);
+            SingleFunctionSolutions::CombinationSum2(nums, target - nums[i], result, combination, used, i);
+            combination.pop_back();
+            used.pop_back();
+        }
+    }
+}
 
 int SingleFunctionSolutions::FindLastPositionThatIsntVal(std::vector<int> v, int val, int start)
 {
